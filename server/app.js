@@ -24,8 +24,8 @@ app.use(express.static("../client/build"));
 app.use(function (req, res, next) {
   next(createError(404));
 });
-app.use("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build","index.html"));
 });
 // error handler
 app.use(function (err, req, res, next) {
